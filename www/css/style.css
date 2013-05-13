@@ -1,0 +1,154 @@
+@CHARSET "ISO-8859-1";
+
+@import url("bootstrap.css");
+
+@import url("bootstrap.min.css");
+
+/* @import url("bootstrap.responsive.min.css"); */
+@import url("bootstrap-responsive.css");
+
+
+
+#num_tosign {
+	
+}
+
+#img_signature {
+	height: 200px;
+}
+
+#signature {
+	width: 100%;
+	height: 150px;
+}
+
+#logo_autosign {
+	margin-bottom: 10px;
+}
+
+#lecteur_pdf {
+	border: 1px solid black;
+	width: 100%;
+}
+
+#gauche {
+	width: 30%;
+}
+
+#grille {
+	height: 600px;
+	margin-left: -15px;
+}
+
+#centre {
+	margin-left: 50px;
+	width: 60%;
+	height: 600px;
+}
+
+#liste_document {
+	display: none;
+	height: 580px;
+	overflow: auto;
+}
+
+#liste_Tous{
+	display: none;
+	height: 580px;
+	overflow: auto;
+}
+
+
+#pdf_reader {
+	display: none;
+	height: 530px;
+}
+
+#certifier {
+	display: none;
+}
+
+#deconnexion {
+	background-color:#f88326;
+	height: 50px;
+}
+
+#logo_autosign {
+	margin-top: 10px;
+	margin-left: 15px;
+	margin-right: -20px;
+	width: 340px;
+	height: 120px;
+}
+
+.ui-mobile .ui-dialog {
+	background: none !important;
+	width: 75% !important;
+	left: 50% !important;
+	margin-left: -37.5% !important;
+}
+
+.ui-icon-cadenas {
+	background-image: url("../img/cadenas.png");
+}
+
+
+#accueil_texte{
+	font-size: 22px;
+}
+
+#accueil_liste li{
+	list-style: none;
+	font-size: 20px;
+	margin-top: 50px;
+	margin-bottom: 50px;
+	padding-left: 20px;
+	padding-top:30px;
+	height: 60px;
+}
+
+#accueil_signer{
+	border-left: 9px solid #0070E4;
+}
+
+#accueil_consulter{
+	border-left: 8px solid #00A0F0;
+}
+
+#accueil_editer{
+	border-left: 8px solid #0080E8;
+}
+
+
+#signatureparent {
+	width: 600px;
+	color: darkblue;
+	background-color: darkgrey;
+	/*max-width:600px;*/
+	padding: 20px;
+	color: darkblue;
+}
+
+/*This is the div within which the signature canvas is fitted*/
+#signature {
+	border: 2px solid black;
+	background-color: lightgrey;
+}
+
+/* Drawing the 'gripper' for touch-enabled devices */
+html.touch #content {
+	float: left;
+	width: 92%;
+}
+
+html.touch #scrollgrabber {
+	float: right;
+	width: 4%;
+	margin-right: 2%;
+	background-image:
+		url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAFCAAAAACh79lDAAAAAXNSR0IArs4c6QAAABJJREFUCB1jmMmQxjCT4T/DfwAPLgOXlrt3IwAAAABJRU5ErkJggg==)
+}
+
+html.borderradius #scrollgrabber {
+	border-radius: 1em;
+}

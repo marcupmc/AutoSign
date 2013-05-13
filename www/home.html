@@ -1,0 +1,139 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Accueil</title>
+<link rel="stylesheet" href="css/style.css" />
+
+<link href="http://code.jquery.com/mobile/latest/jquery.mobile.min.css"
+	rel="stylesheet" type="text/css" />
+<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+<script src="http://code.jquery.com/mobile/latest/jquery.mobile.min.js"></script>
+
+<script type="text/javascript" src="cordova-2.7.0.js"></script>
+<script src="js/jSignature2.js"></script>
+<script src="js/script.js"></script>
+
+<link rel="stylesheet" href="themes/testTheme.min.css" />
+</head>
+
+<title>Home Page</title>
+
+
+<script type="text/javascript">
+	/** Called when phonegap javascript is loaded */
+	function onDeviceReady() {
+		//	document.getElementById("helloworld").innerHTML = "Hello World! Loaded PhoneGap Framework!";
+		console.log("###################################");
+	}
+
+	/** Called when browser load this page*/
+	function init() {
+
+		document.addEventListener("deviceready", onDeviceReady, false);
+	}
+</script>
+
+</head>
+<body onLoad="init()">
+	<div data-role="page" id="page-home" class="type-interior"
+		data-theme="b">
+		<div data-role="header" data-theme="b">
+			<h1 id="welcome"></h1>
+		</div>
+
+		<div data-role="content" data-theme="b">
+			<div class="ui-grid-a" id="grille">
+				<div class="ui-block-a" id="gauche">
+					<img id="logo_autosign" src="img/Logo_AutoSign4.png" />
+					<ul data-role="listview" data-count-theme="b">
+
+						<li><a onclick="showListe()">A Signer<span
+								id="num_tosign" class="ui-li-count"></span></a></li>
+						<li><a onclick="showAll()">Mes Documents</a></li>
+						<li><a href="#popupLogin" data-rel="popup"
+							data-position-to="window" data-inline="true" data-icon="check"
+							data-theme="c" data-transition="pop">Changer ma Signature</a></li>
+						<li data-theme="c" id="img_signature"></li>
+						<li data-theme="e"><a onclick="deconnexion()">Se
+								Déconnecter</a></li>
+					</ul>
+
+					<div data-role="popup" id="popupMenu" data-theme="c">
+						<div data-role="popup" id="popupLogin" data-theme="c"
+							class="ui-corner-all">
+							<a href="#" data-rel="back" data-role="button" data-theme="a"
+								data-icon="delete" data-iconpos="notext" class="ui-btn-right" onclick="closeSignature()">Close</a>
+							<div style="padding: 10px 20px;">
+								<h3>Signer ici</h3>
+								<div id="signatureparent">
+									<div id="signature"></div>
+								</div>
+								<div id="tools"></div>
+								<button id="sendSignature" onclick="sendSignature()">Enregistrer</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="ui-block-b" id="centre">
+					<div id="accueil" data-role="content"
+						class="jqm-content ui-content" role="main">
+						<h2>Bienvenue dans AutoSign</h2>
+
+						<div id="accueil_texte">
+							<div>Cette application vous permet de signer vos documents
+								en toute sécurité</div>
+							<div>Ainsi vous pouvez :</div>
+
+							<div>
+								<ul id="accueil_liste">
+									<li id="accueil_signer">Signer vos documents en cliquant
+										sur "A Signer"</li>
+									<li id="accueil_consulter">Consulter vos documents en
+										cliquant sur "Mes Documents"</li>
+									<li id="accueil_editer">Editer votre signature en cliquant
+										sur "Changer ma Signature"</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+					<div id="liste_document" data-inline="true">
+						<h3>Documents à Signer</h3>
+						<ul data-role="listview" data-inset="true" data-theme="c"
+							id="documents">
+						</ul>
+
+					</div>
+
+					<div id="liste_Tous" data-inline="true">
+						<h3>Mes Documents</h3>
+						<ul id="liste_all" data-role="listview" data-autodividers="true"
+							data-filter="true" data-inset="true">
+						</ul>
+					</div>
+
+					<div id="pdf_reader"></div>
+
+					<div class="ui-grid-d" id="certifier">
+						<div class="ui-block-a"></div>
+						<div class="ui-block-b"></div>
+						<div class="ui-block-c"></div>
+						<div class="ui-block-d"></div>
+						<div class="ui-block-e">
+							<button data-ajax="true" onclick="beginCertification()">Signer</button>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+		<div data-role="footer" data-theme="b" class="footer-doc"
+			data-position="fixed">
+			<p>CapGemini AutoSign&copy;</p>
+		</div>
+	</div>
+</body>
+</html>

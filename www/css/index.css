@@ -1,0 +1,42 @@
+@CHARSET "ISO-8859-1";
+
+body {
+
+}
+.ui-page {
+    background: transparent;
+}
+.ui-content{
+    background: transparent;
+}
+#page-home {
+	 background: url("../img/fond1.jpg");
+    background-repeat:repeat-y;
+    background-position:center center;
+    background-attachment:scroll;
+    background-size:100% 100%
+}
+
+#formulaire {
+	width: 400px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top:10%;
+	padding:10px;
+	
+	-moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+ 
+    
+    background-color: white;
+}
+
+#formulaire img{
+	margin-left: 20%;
+}
+
+#formulaire h2{
+	text-align: center;
+}
+
