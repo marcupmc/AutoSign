@@ -3,12 +3,14 @@
 body {
 
 }
+
 .ui-page {
     background: transparent;
 }
 .ui-content{
     background: transparent;
 }
+
 #page-home {
 	 background: url("../img/fond1.jpg");
     background-repeat:repeat-y;
@@ -40,3 +42,9 @@ body {
 	text-align: center;
 }
 
+.ui-mobile .ui-dialog {
+	background: none !important;
+	width: 75% !important;
+	left: 50% !important;
+	margin-left: -37.5% !important;
+}

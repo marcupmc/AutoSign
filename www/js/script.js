@@ -1,8 +1,8 @@
 //var serviceURL = "http://10.0.2.2:8080/TestRest/rest/";
 //var urlServlet = "http://10.0.2.2:8080/TestRest/";
 
-var serviceURL = "http://192.168.0.103:8080/TestRest/rest/";
-var urlServlet = "http://192.168.0.103:8080/TestRest/";
+var serviceURL;//= "http://192.168.0.103:8080/TestRest/rest/";
+var urlServlet ;//= "http://192.168.0.103:8080/TestRest/";
 
 var documents=[];
 var nbToSign=0;
@@ -27,7 +27,15 @@ $(document).ready( function () {
 	if(window.localStorage.getItem("identifiant")==-1){
 		document.location.href="index.html";
 		alert('Veuillez vous authentifier');
+	}
+	else if(window.localStorage.getItem("ip")==-1)	{
+		document.location.href="index.html";
+		alert('Veuillez configurer l\'ip du serveur');
 	}else{
+		
+		serviceURL="http://"+window.localStorage.getItem("ip")+"/TestRest/rest/";
+		urlServlet="http://"+window.localStorage.getItem("ip")+"/TestRest/";
+		
 		$sigDiv=$("#signature").jSignature();
 		var temp =location.search.split("=");
 		identifiant = unescape(temp[1]);
@@ -181,10 +189,10 @@ function close(){
 function beginCertification(){
 	console.log('------ DEBUT CERTIF----');
 	callRestToTemporisation();
-	 ref = window.open(urlServlet+"CertifierDocument?identifiant="+identifiant+"&id="+idToSign, '_blank', 'location=no');
+	ref = window.open(urlServlet+"CertifierDocument?identifiant="+identifiant+"&id="+idToSign, '_blank', 'location=no');
 
 }
- 
+
 
 //Appel la fonction qui verifie si le document est certifié sur le serveur
 function callRestToTemporisation(){
@@ -195,7 +203,7 @@ function callRestToTemporisation(){
 		data: idToSign.toString(), 
 		dataType: "text",
 //		async:true,
-		
+
 		success: function(msg){
 			if(msg=="ok"){
 				console.log('------ END Tempo ----');
