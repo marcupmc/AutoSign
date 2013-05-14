@@ -1,22 +1,46 @@
+<!-- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
+
+                                 
+                       
+<!--              /Nd:             				                                      ________________                                                -->
+<!--            :dMMMMh-           				                                     |                                                                -->
+<!--          :dMMMMMMMMd:         					                                 |                                                                -->
+<!--        +mMMMMMMMMMMMMm+`      				                                     |                     ***                                        -->
+<!--     `oNMMMMMMMMMMMMMMMMMy`    				                                     |                     ***                                        -->
+<!--    `mMMMMMMMMMMMMMMMMMMMMN.   				    _____________   _____________    |                              __________         _              -->
+<!--    +MMMMMMMMMMMMMMMMMMMMMMo  | 			|   	 |         |			 |   |_______________       |      |                  | \       |     -->
+<!--    /MMMMMMMMMMMMMMMMMMMMMMo  |             |        |         |             |                   |      |      |          		  |  \      |     -->
+<!--     dMMMMMMMMMMMMMMMMMMMMh   |             |        |         |             |                   |      |      |                  |   \     |     -->
+<!--      +mMMMMMMMMMMMMMMMMd/    |             |        |         |             |                   |      |      |       ______     |    \    |     -->
+<!--        .:+++/NMMM/://-`      |             |        |         |             |                   |      |      |             |    |     \   |     -->
+<!--             yMMMMd`          |             |        |         |             |                   |      |      |             |    |      \  |     -->
+<!--            /yyyyyyo`         |_____________|        |         |_____________|   ________________|      |      |_____________|    |       \_|     -->
+ 
+<!-- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
+<!--  CapGemini ECM3 - AutoSign -->
+
+
+<!------------------------------------------------->
+<!-- CapGemini ECM3 - AutoSign                   -->
+<!------------------------------------------------->
 <html>
 <head>
+
+<!-- META -->
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="css/index.css">
 
+<!-- STYLE CSS -->
+<link rel="stylesheet" href="css/index.css">
 <link href="http://code.jquery.com/mobile/latest/jquery.mobile.min.css"
 	rel="stylesheet" type="text/css" />
+	
+<!-- 	SCRIPTS JS -->
 <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
 <script src="http://code.jquery.com/mobile/latest/jquery.mobile.min.js"></script>
-
-
-<!-- <script type="text/javascript" charset="utf-8" src="phonegap.js"></script> -->
-<script type="text/javascript" charset="utf-8" src="cordova-2.7.0.js"></script>
-
-
+<script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
+<!-- <script type="text/javascript" charset="utf-8" src="cordova-2.7.0.js"></script> -->
 <script src="js/index.js"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Auto Sign</title>
 <script type="text/javascript">
 	/** Called when phonegap javascript is loaded */
 	function onDeviceReady() {
@@ -29,11 +53,15 @@
 
 		document.addEventListener("deviceready", onDeviceReady, false);
 	}
-</script> 
+</script>
+<title>Auto Sign</title>
 </head>
+
 <body onLoad="init()">
 	<div data-role="page" id="page-home">
 		<div data-role="content">
+
+			<!-- 		Formulaire de connexion -->
 			<div id="formulaire">
 				<img src="img/Logo_AutoSign4.png"
 					style="width: 253px; height: 80px;" class="img-rounded">
@@ -46,19 +74,21 @@
 					<button data-role="button" value="Connexion" data-theme="b"
 						type="submit">Connexion</button>
 				</form>
+				<!-- 				FIN -->
 
+				<!-- 				Bouton parametrage de l'ip du serveur -->
 				<a href="#popupLogin" data-rel="popup" data-position-to="window"
-					data-inline="true"  data-theme="c"
-					data-transition="pop" data-role="button" data-icon="gear" data-iconpos="notext">Ip du Serveur</a>
+					data-inline="true" data-theme="c" data-transition="pop"
+					data-role="button" data-icon="gear" data-iconpos="notext">Ip du
+					Serveur</a>
+				<!-- FIN -->
 
-
-
+				<!-- 				Formulaire de paramètrage de l'ip du serveur -->
 				<div data-role="popup" id="popupMenu" data-theme="c">
 					<div data-role="popup" id="popupLogin" data-theme="c"
 						class="ui-corner-all">
 						<a href="#" data-rel="back" data-role="button" data-theme="a"
-							data-icon="delete" data-iconpos="notext" class="ui-btn-right"
-							>Close</a>
+							data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
 						<div style="padding: 10px 20px;">
 							<h3>Entrer ici l'ip du serveur</h3>
 							<input type="text" id="ipadress" />
@@ -66,7 +96,8 @@
 						</div>
 					</div>
 				</div>
-			
+				<!-- 				FIN -->
+
 			</div>
 
 		</div>
