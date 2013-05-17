@@ -39,6 +39,8 @@ var serviceURL;
 
 //Fonction appelé au chargement de la page qui permet d'authentifier l'utilisateur
 $(document).ready( function () { 
+	var ipAddresse  = myIP();
+	$("#connexionForm").append("<input type=\"hidden\" name=\"ipClient\" id=\"ipClient\" value=\""+ipAddresse+" \"/>");
 	$("#connexionForm").submit( function() { 
 		if(window.localStorage.getItem("ip")==-1){
 			alert("Veuillez configurer l\'ip du serveur");
@@ -66,6 +68,24 @@ $(document).ready( function () {
 	});
 
 });  
+
+
+function myIP() {
+    if (window.XMLHttpRequest) xmlhttp = new XMLHttpRequest();
+    else xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+
+    xmlhttp.open("GET","http://api.hostip.info/get_html.php",false);
+    xmlhttp.send();
+
+    hostipInfo = xmlhttp.responseText.split("\n");
+
+    for (i=0; hostipInfo.length >= i; i++) {
+        ipAddress = hostipInfo[i].split(":");
+        if ( ipAddress[0] == "IP" ) return ipAddress[1];
+    }
+
+    return false;
+}
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 

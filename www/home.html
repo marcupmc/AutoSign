@@ -36,9 +36,9 @@
 <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
 <script src="http://code.jquery.com/mobile/latest/jquery.mobile.min.js"></script>
 
-<script type="text/javascript" src="phonegap.js"></script>
+<!-- <script type="text/javascript" src="phonegap.js"></script> -->
 
-<!-- <script type="text/javascript" charset="utf-8" src="cordova-2.7.0.js"></script> -->
+<script type="text/javascript" charset="utf-8" src="cordova-2.7.0.js"></script>
 <script src="js/jSignature2.js"></script>
 <script src="js/script.js"></script>
 
@@ -90,7 +90,13 @@
 							data-theme="c" data-transition="pop">Changer ma Signature</a></li>
 						<li data-theme="c" id="img_signature"></li>
 						<li data-theme="e"><a onclick="deconnexion()">Se
-								Déconnecter</a></li>
+								Déconnecter
+								<form id="deco">
+									<input type="hidden" name="ipClient" id="ipClient" value="" />
+									<input type="hidden" name="idClient" id="idClient" value="" />
+								</form>
+
+						</a></li>
 					</ul>
 
 					<!-- 					POP UP Saisie de la signature -->

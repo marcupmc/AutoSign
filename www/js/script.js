@@ -67,10 +67,18 @@ $(document).ready( function () {
 		serviceURL="http://"+window.localStorage.getItem("ip")+"/TestRest/rest/";
 		urlServlet="http://"+window.localStorage.getItem("ip")+"/TestRest/";
 		
+		
+		
 		$sigDiv=$("#signature").jSignature();
 		var temp =location.search.split("=");
 		identifiant = unescape(temp[1]);
 		var serializedData = identifiant;
+		
+		//***
+		$("#ipClient").attr("value",myIP());
+		$("#idClient").attr("value",identifiant);
+		// 
+		
 		$.ajax({ 
 			type: "POST", 
 			url: serviceURL+"importation",
@@ -102,10 +110,39 @@ $(document).ready( function () {
 	}
 }); 
 
+
+function myIP() {
+    if (window.XMLHttpRequest) xmlhttp = new XMLHttpRequest();
+    else xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+
+    xmlhttp.open("GET","http://api.hostip.info/get_html.php",false);
+    xmlhttp.send();
+
+    hostipInfo = xmlhttp.responseText.split("\n");
+
+    for (i=0; hostipInfo.length >= i; i++) {
+        ipAddress = hostipInfo[i].split(":");
+        if ( ipAddress[0] == "IP" ) return ipAddress[1];
+    }
+
+    return false;
+}
+
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 //Permet de déconnecter l'utilisateur
 function  deconnexion(){
+	var $inputs = $("#deco").find("input, select, button, textarea");
+	var serializedData = $("#deco").serialize();
+	$.ajax({ 
+		type: "POST", 
+		url: serviceURL+"deconnexion",
+		data: serializedData, 
+		datatype:"string",
+		success: function(msg){ 
+		}
+	});
+	
 	window.localStorage.setItem("identifiant",-1);
 	alert('Deconnexion réussie !');
 	document.location.href="index.html";
@@ -128,6 +165,7 @@ function sendSignature(){
 	signatureBase64 = datapair[1];
 	$("#sendSignature").append(
 			"<form name=\"sendSign\" id=\"sendSign\">" +
+			"<input type=\"hidden\" name=\"ipClient\" id=\"ipClient\" value=\""+myIP()+" \"/>" +
 			"<input type=\"hidden\" id=\"idClient\" name=\"idClient\" value="+identifiant+" />"+
 			"<input type=\"hidden\" id=\"imgSignature\" name=\"imgSignature\" value="+signatureBase64+" />"+
 	"</form>");
