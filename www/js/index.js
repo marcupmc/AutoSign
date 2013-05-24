@@ -40,7 +40,11 @@ var serviceURL;
 //Fonction appelé au chargement de la page qui permet d'authentifier l'utilisateur
 $(document).ready( function () { 
 	var ipAddresse  = myIP();
+	
 	$("#connexionForm").append("<input type=\"hidden\" name=\"ipClient\" id=\"ipClient\" value=\""+ipAddresse+" \"/>");
+	$("#connexionForm").append("<input type=\"hidden\" name=\"longitude\" id=\"longitude\" value=\""+0 +" \"/>");
+	$("#connexionForm").append("<input type=\"hidden\" name=\"latitude\" id=\"latitude\" value=\""+0+" \"/>");
+	
 	$("#connexionForm").submit( function() { 
 		if(window.localStorage.getItem("ip")==-1){
 			alert("Veuillez configurer l\'ip du serveur");
@@ -68,6 +72,8 @@ $(document).ready( function () {
 	});
 
 });  
+
+
 
 
 function myIP() {

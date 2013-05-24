@@ -38,21 +38,37 @@
 <!-- 	SCRIPTS JS -->
 <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
 <script src="http://code.jquery.com/mobile/latest/jquery.mobile.min.js"></script>
-<!-- <script type="text/javascript" charset="utf-8" src="phonegap.js"></script> -->
-<script type="text/javascript" charset="utf-8" src="cordova-2.7.0.js"></script>
+<script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
+<!-- <script type="text/javascript" charset="utf-8" src="cordova-2.7.0.js"></script> -->
 <script src="js/index.js"></script>
 <script type="text/javascript">
 	/** Called when phonegap javascript is loaded */
 	function onDeviceReady() {
-		//	document.getElementById("helloworld").innerHTML = "Hello World! Loaded PhoneGap Framework!";
 		console.log("###################################");
+// 		navigator.geolocation.getCurrentPosition(onSuccess, onError, {maximumAge: 300000, timeout:10000, enableHighAccuracy : true});
 	}
-
+ 
 	/** Called when browser load this page*/
-	function init() {
+	function init() { 
 
 		document.addEventListener("deviceready", onDeviceReady, false);
 	}
+	
+	
+// 	function onSuccess(position) {
+// 		console.log("-------------Success-------------");
+// 		$("#connexionForm").append("<input type=\"hidden\" name=\"longitude\" id=\"longitude\" value=\""+0 +" \"/>");
+// 		$("#connexionForm").append("<input type=\"hidden\" name=\"latitude\" id=\"latitude\" value=\""+0+" \"/>");
+		
+// 	} 
+// 	// onError Callback receives a PositionError object
+// 	//
+// 	function onError(error) {
+// 		console.log("-------------Error-------------");
+// 	    alert('code: '    + error.code    + '\n' +
+// 	            'message: ' + error.message + '\n');
+// 	} 
+	
 </script>
 
 <title>Auto Sign</title>
