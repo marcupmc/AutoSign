@@ -43,37 +43,44 @@
 <script src="js/index.js"></script>
 <script type="text/javascript">
 	/** Called when phonegap javascript is loaded */
+	
 	function onDeviceReady() {
 		console.log("###################################");
-// 		navigator.geolocation.getCurrentPosition(onSuccess, onError, {maximumAge: 300000, timeout:10000, enableHighAccuracy : true});
+		// Check if geolocation is available
+		if(window.localStorage.getItem("longitude")==-1&&window.localStorage.getItem("latitude")==-1)
+			navigator.geolocation.getCurrentPosition(onGPSSuccess, onGPSError, { maximumAge: 3000, timeout: 80000, enableHighAccuracy: true }); 
+		
+		$("#connexionForm").append("<input type=\"hidden\" name=\"longitude\" id=\"longitude\" value=\""+window.localStorage.getItem("longitude")+"\"/>");
+		$("#connexionForm").append("<input type=\"hidden\" name=\"latitude\" id=\"latitude\" value=\""+window.localStorage.getItem("latitude")+"\"/>");
 	}
- 
+  
 	/** Called when browser load this page*/
 	function init() { 
-
+ 
 		document.addEventListener("deviceready", onDeviceReady, false);
 	}
+	 
 	
-	
-// 	function onSuccess(position) {
-// 		console.log("-------------Success-------------");
-// 		$("#connexionForm").append("<input type=\"hidden\" name=\"longitude\" id=\"longitude\" value=\""+0 +" \"/>");
-// 		$("#connexionForm").append("<input type=\"hidden\" name=\"latitude\" id=\"latitude\" value=\""+0+" \"/>");
-		
-// 	} 
-// 	// onError Callback receives a PositionError object
-// 	//
-// 	function onError(error) {
-// 		console.log("-------------Error-------------");
-// 	    alert('code: '    + error.code    + '\n' +
-// 	            'message: ' + error.message + '\n');
-// 	} 
+	function onGPSSuccess(position) {
+		console.log("-------------Success-------------");
+		alert("GPS OK lat : "+position.coords.latitude+" long : "+position.coords.longitude);
+		window.localStorage.setItem("longitude",position.coords.longitude);
+		window.localStorage.setItem("latitude",position.coords.latitude);
+		 
+	} 
+	// onError Callback receives a PositionError object
+	//
+	function onGPSError(error) {
+		console.log("-------------Error-------------");
+	    alert('code: '    + error.code    + '\n' +
+	            'message: ' + error.message + '\n');
+	} 
 	
 </script>
 
 <title>Auto Sign</title>
 </head>
-
+ 
 <body onLoad="init()">
 	<div data-role="page" id="page-home">
 		<div data-role="content">

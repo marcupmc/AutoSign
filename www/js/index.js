@@ -1,30 +1,30 @@
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-//  
-//                                 
-//                       
-//             /Nd:             				                                      ________________ 
-//           :dMMMMh-           				                                     |
-//         :dMMMMMMMMd:         					                                 | 
-//       +mMMMMMMMMMMMMm+`      				                                     |                     *** 
-//    `oNMMMMMMMMMMMMMMMMMy`    				                                     |                     ***  
-//   `mMMMMMMMMMMMMMMMMMMMMN.   				_____________    _____________       |                              __________          _
-//   +MMMMMMMMMMMMMMMMMMMMMMo  | 			 |   	  |         |			  |      |_______________       |      |                   | \       |
-//   /MMMMMMMMMMMMMMMMMMMMMMo  |             |        |         |             |                      |      |      |          		   |  \      |
-//    dMMMMMMMMMMMMMMMMMMMMh   |             |        |         |             |                      |      |      |                   |   \     |
-//     +mMMMMMMMMMMMMMMMMd/    |             |        |         |             |                      |      |      |       ______      |    \    |
-//       .:+++/NMMM/://-`      |             |        |         |             |                      |      |      |             |     |     \   |
-//            yMMMMd`          |             |        |         |             |                      |      |      |             |     |      \  |
-//           /yyyyyyo`         |_____________|        |         |_____________|      ________________|      |      |_____________|     |       \_|
-//
+
+
+
+///Nd:             				                                      ________________ 
+//:dMMMMh-           				                                     |
+//:dMMMMMMMMd:         					                                 | 
+//+mMMMMMMMMMMMMm+`      				                                     |                     *** 
+//`oNMMMMMMMMMMMMMMMMMy`    				                                     |                     ***  
+//`mMMMMMMMMMMMMMMMMMMMMN.   				_____________    _____________       |                              __________          _
+//+MMMMMMMMMMMMMMMMMMMMMMo  | 			 |   	  |         |			  |      |_______________       |      |                   | \       |
+///MMMMMMMMMMMMMMMMMMMMMMo  |             |        |         |             |                      |      |      |          		   |  \      |
+//dMMMMMMMMMMMMMMMMMMMMh   |             |        |         |             |                      |      |      |                   |   \     |
+//+mMMMMMMMMMMMMMMMMd/    |             |        |         |             |                      |      |      |       ______      |    \    |
+//.:+++/NMMM/://-`      |             |        |         |             |                      |      |      |             |     |     \   |
+//yMMMMd`          |             |        |         |             |                      |      |      |             |     |      \  |
+///yyyyyyo`         |_____________|        |         |_____________|      ________________|      |      |_____________|     |       \_|
+
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// CapGemini ECM3 - AutoSign
-//
-// SCRIPT de la page index.html
-//
-//
-// INFO : 
-// IP LOCALHOST : 10.0.2.2:8080
-//
+//CapGemini ECM3 - AutoSign
+
+//SCRIPT de la page index.html
+
+
+//INFO : 
+//IP LOCALHOST : 10.0.2.2:8080
+
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -40,11 +40,9 @@ var serviceURL;
 //Fonction appelé au chargement de la page qui permet d'authentifier l'utilisateur
 $(document).ready( function () { 
 	var ipAddresse  = myIP();
-	
+
 	$("#connexionForm").append("<input type=\"hidden\" name=\"ipClient\" id=\"ipClient\" value=\""+ipAddresse+" \"/>");
-	$("#connexionForm").append("<input type=\"hidden\" name=\"longitude\" id=\"longitude\" value=\""+0 +" \"/>");
-	$("#connexionForm").append("<input type=\"hidden\" name=\"latitude\" id=\"latitude\" value=\""+0+" \"/>");
-	
+
 	$("#connexionForm").submit( function() { 
 		if(window.localStorage.getItem("ip")==-1){
 			alert("Veuillez configurer l\'ip du serveur");
@@ -77,20 +75,20 @@ $(document).ready( function () {
 
 
 function myIP() {
-    if (window.XMLHttpRequest) xmlhttp = new XMLHttpRequest();
-    else xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+	if (window.XMLHttpRequest) xmlhttp = new XMLHttpRequest();
+	else xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
 
-    xmlhttp.open("GET","http://api.hostip.info/get_html.php",false);
-    xmlhttp.send();
+	xmlhttp.open("GET","http://api.hostip.info/get_html.php",false);
+	xmlhttp.send();
 
-    hostipInfo = xmlhttp.responseText.split("\n");
+	hostipInfo = xmlhttp.responseText.split("\n");
 
-    for (i=0; hostipInfo.length >= i; i++) {
-        ipAddress = hostipInfo[i].split(":");
-        if ( ipAddress[0] == "IP" ) return ipAddress[1];
-    }
+	for (i=0; hostipInfo.length >= i; i++) {
+		ipAddress = hostipInfo[i].split(":");
+		if ( ipAddress[0] == "IP" ) return ipAddress[1];
+	}
 
-    return false;
+	return false;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------------

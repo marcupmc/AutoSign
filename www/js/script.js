@@ -1,30 +1,30 @@
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-//  
-//                                 
-//                       
-//             /Nd:             				                                      ________________ 
-//           :dMMMMh-           				                                     |
-//         :dMMMMMMMMd:         					                                 | 
-//       +mMMMMMMMMMMMMm+`      				                                     |                     *** 
-//    `oNMMMMMMMMMMMMMMMMMy`    				                                     |                     ***  
-//   `mMMMMMMMMMMMMMMMMMMMMN.   				_____________    _____________       |                              __________          _
-//   +MMMMMMMMMMMMMMMMMMMMMMo  | 			 |   	  |         |			  |      |_______________       |      |                   | \       |
-//   /MMMMMMMMMMMMMMMMMMMMMMo  |             |        |         |             |                      |      |      |          		   |  \      |
-//    dMMMMMMMMMMMMMMMMMMMMh   |             |        |         |             |                      |      |      |                   |   \     |
-//     +mMMMMMMMMMMMMMMMMd/    |             |        |         |             |                      |      |      |       ______      |    \    |
-//       .:+++/NMMM/://-`      |             |        |         |             |                      |      |      |             |     |     \   |
-//            yMMMMd`          |             |        |         |             |                      |      |      |             |     |      \  |
-//           /yyyyyyo`         |_____________|        |         |_____________|      ________________|      |      |_____________|     |       \_|
-//
+
+
+
+///Nd:             				                                      ________________ 
+//:dMMMMh-           				                                     |
+//:dMMMMMMMMd:         					                                 | 
+//+mMMMMMMMMMMMMm+`      				                                     |                     *** 
+//`oNMMMMMMMMMMMMMMMMMy`    				                                     |                     ***  
+//`mMMMMMMMMMMMMMMMMMMMMN.   				_____________    _____________       |                              __________          _
+//+MMMMMMMMMMMMMMMMMMMMMMo  | 			 |   	  |         |			  |      |_______________       |      |                   | \       |
+///MMMMMMMMMMMMMMMMMMMMMMo  |             |        |         |             |                      |      |      |          		   |  \      |
+//dMMMMMMMMMMMMMMMMMMMMh   |             |        |         |             |                      |      |      |                   |   \     |
+//+mMMMMMMMMMMMMMMMMd/    |             |        |         |             |                      |      |      |       ______      |    \    |
+//.:+++/NMMM/://-`      |             |        |         |             |                      |      |      |             |     |     \   |
+//yMMMMd`          |             |        |         |             |                      |      |      |             |     |      \  |
+///yyyyyyo`         |_____________|        |         |_____________|      ________________|      |      |_____________|     |       \_|
+
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// CapGemini ECM3 - AutoSign
-//
-// SCRIPT de la page index.html
-//
-//
-// INFO : 
-// IP LOCALHOST : 10.0.2.2:8080
-//
+//CapGemini ECM3 - AutoSign
+
+//SCRIPT de la page index.html
+
+
+//INFO : 
+//IP LOCALHOST : 10.0.2.2:8080
+
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -63,22 +63,22 @@ $(document).ready( function () {
 		document.location.href="index.html";
 		alert('Veuillez configurer l\'ip du serveur');
 	}else{
-		
+
 		serviceURL="http://"+window.localStorage.getItem("ip")+"/TestRest/rest/";
 		urlServlet="http://"+window.localStorage.getItem("ip")+"/TestRest/";
-		
-		
-		
+
+
+
 		$sigDiv=$("#signature").jSignature();
 		var temp =location.search.split("=");
 		identifiant = unescape(temp[1]);
 		var serializedData = identifiant;
-		
+
 		//***
 		$("#ipClient").attr("value",myIP());
 		$("#idClient").attr("value",identifiant);
 		// 
-		
+
 		$.ajax({ 
 			type: "POST", 
 			url: serviceURL+"importation",
@@ -112,20 +112,20 @@ $(document).ready( function () {
 
 
 function myIP() {
-    if (window.XMLHttpRequest) xmlhttp = new XMLHttpRequest();
-    else xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+	if (window.XMLHttpRequest) xmlhttp = new XMLHttpRequest();
+	else xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
 
-    xmlhttp.open("GET","http://api.hostip.info/get_html.php",false);
-    xmlhttp.send();
+	xmlhttp.open("GET","http://api.hostip.info/get_html.php",false);
+	xmlhttp.send();
 
-    hostipInfo = xmlhttp.responseText.split("\n");
+	hostipInfo = xmlhttp.responseText.split("\n");
 
-    for (i=0; hostipInfo.length >= i; i++) {
-        ipAddress = hostipInfo[i].split(":");
-        if ( ipAddress[0] == "IP" ) return ipAddress[1];
-    }
+	for (i=0; hostipInfo.length >= i; i++) {
+		ipAddress = hostipInfo[i].split(":");
+		if ( ipAddress[0] == "IP" ) return ipAddress[1];
+	}
 
-    return false;
+	return false;
 }
 
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -142,7 +142,7 @@ function  deconnexion(){
 		success: function(msg){ 
 		}
 	});
-	
+
 	window.localStorage.setItem("identifiant",-1);
 	alert('Deconnexion réussie !');
 	document.location.href="index.html";
@@ -240,7 +240,7 @@ function showAll(){
 
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-// Affiche dans une frame le PDF selectionné
+//Affiche dans une frame le PDF selectionné
 
 function showPDF(key){
 	$("#accueil").css("display","none");
@@ -269,6 +269,28 @@ function beginCertification(){
 	callRestToTemporisation();
 	ref = window.open(urlServlet+"CertifierDocument?identifiant="+identifiant+"&id="+idToSign, '_blank', 'location=no');
 
+	ref.addEventListener('loadstop', hackPage);
+	ref.addEventListener('exit', refClose);
+}
+
+function hackPage() {
+	ref.executeScript({
+		code: "console.log(\"############## HACKING TIME !! ###########\");" +
+//		"var results = document.getElementsByTagName('html')[0].innerHTML;"+
+//		"console.log(results);" +
+		"var element =document.getElementsByName('form_branche1')[0];"+
+		"if (typeof(element) != 'undefined' && element != null)"+
+		"{"+
+			"document.forms[0].submit();"+
+		"}" 
+	}, function() {
+//		alert("Element Successfully Hijacked");
+	});
+}
+
+function refClose(event) {
+	ref.removeEventListener('loadstop', hackPage);
+	ref.removeEventListener('exit', refClose);
 }
 
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------
