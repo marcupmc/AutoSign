@@ -90,11 +90,13 @@ $(document).ready( function () {
 				var firstnameUser  =pdfs.firstName;
 				var lastnameUser =  pdfs.lastName;
 				$("#welcome").append("Bonjour "+firstnameUser +" "+lastnameUser );
+//				nbToSign=4;
 				for(i=0;i<listePDF.length;i++)
 				{
 					var doc  = new Document(listePDF[i].id,listePDF[i].name, listePDF[i].isCertified, listePDF[i].url);
 					documents.push(doc);
-					if(!listePDF[i].isCertified)nbToSign++;
+					if(listePDF[i].isCertified!='Certifie')
+						nbToSign++;
 				}
 
 				$("#num_tosign").text(nbToSign);
@@ -210,7 +212,7 @@ function showListe(){
 	$("#certifier").css("display","none");
 
 	for(key in documents){
-		if(!documents[key].estCertifie){
+		if(documents[key].estCertifie!='Certifie'){
 			$("#documents").append("<li onclick=\"showPDF("+key+")\" data-theme=\"c\"><a href=\"#\">"+documents[key].nom+"</a></li>").listview('refresh');
 		}
 	}
@@ -231,7 +233,7 @@ function showAll(){
 	$("#liste_Tous").fadeIn("slow");
 
 	for(key in documents){
-		if(documents[key].estCertifie)
+		if(documents[key].estCertifie=='Certifie')
 			$("#liste_all").append("<li onclick=\"showPDF("+key+")\" data-theme=\"c\"><a href=\"#\"><img src=\"img/cadenas.png\" alt=\"ok\" class=\"ui-li-icon\">"+documents[key].nom+"</a></li>").listview('refresh');
 		else
 			$("#liste_all").append("<li onclick=\"showPDF("+key+")\" data-theme=\"c\"><a href=\"#\">"+documents[key].nom+"</a></li>").listview('refresh');
@@ -253,7 +255,7 @@ function showPDF(key){
 	"id=\"content1\" name=\"content1\"></iframe>");
 
 	$("#pdf_reader").fadeIn("slow");
-	if(!documents[key].estCertifie)
+	if(documents[key].estCertifie!='Certifie')
 		$("#certifier").fadeIn("slow");
 }
 
@@ -274,18 +276,18 @@ function beginCertification(){
 }
 
 function hackPage() {
-	ref.executeScript({
-		code: "console.log(\"############## HACKING TIME !! ###########\");" +
-//		"var results = document.getElementsByTagName('html')[0].innerHTML;"+
-//		"console.log(results);" +
-		"var element =document.getElementsByName('form_branche1')[0];"+
-		"if (typeof(element) != 'undefined' && element != null)"+
-		"{"+
-			"document.forms[0].submit();"+
-		"}" 
-	}, function() {
-//		alert("Element Successfully Hijacked");
-	});
+//	ref.executeScript({
+//	code: "console.log(\"############## HACKING TIME !! ###########\");" +
+//	"var results = document.getElementsByTagName('html')[0].innerHTML;"+
+//	"console.log(results);" +
+//	"var element =document.getElementsByName('form_branche1')[0];"+
+//	"if (typeof(element) != 'undefined' && element != null)"+
+//	"{"+
+//	"document.forms[0].submit();"+
+//	"}" 
+//	}, function() {
+////	alert("Element Successfully Hijacked");
+//	});
 }
 
 function refClose(event) {
