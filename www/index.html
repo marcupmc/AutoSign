@@ -17,35 +17,42 @@
 <!--            /yyyyyyo`         |_____________|        |         |_____________|   ________________|      |      |_____________|    |       \_|     -->
  
 <!-- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
-<!--  CapGemini ECM3 - AutoSign -->
+<!--  CapGemini ECM3 - AutoSign --> 
 
 
 <!------------------------------------------------->
 <!-- CapGemini ECM3 - AutoSign                   -->
 <!------------------------------------------------->
 <html>
-<head>
+<head>     
 
 <!-- META -->
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"> 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- STYLE CSS -->
 <link rel="stylesheet" href="css/index.css">
-<link href="http://code.jquery.com/mobile/latest/jquery.mobile.min.css"
-	rel="stylesheet" type="text/css" />
+<!-- <link href="http://code.jquery.com/mobile/latest/jquery.mobile.min.css" -->
+<!-- 	rel="stylesheet" type="text/css" /> -->
 	
 <!-- 	SCRIPTS JS -->
-<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
-<script src="http://code.jquery.com/mobile/latest/jquery.mobile.min.js"></script>
-<script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
+<!-- <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script> -->
+<!-- <script src="http://code.jquery.com/mobile/latest/jquery.mobile.min.js"></script> -->
 <!-- <script type="text/javascript" charset="utf-8" src="cordova-2.7.0.js"></script> -->
+
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css" />
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+
+<!-- <script src="jquery/mobile/jquery.mobile-1.1.0.min.js"></script> -->
+<script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
+
 <script src="js/index.js"></script>
-<script type="text/javascript">
+<script type="text/javascript">  
 	/** Called when phonegap javascript is loaded */
-	
+	 
 	function onDeviceReady() {
-		console.log("###################################");
+		console.log("#####################################");
 		// Check if geolocation is available
 		if(window.localStorage.getItem("longitude")==-1&&window.localStorage.getItem("latitude")==-1)
 			navigator.geolocation.getCurrentPosition(onGPSSuccess, onGPSError, { maximumAge: 3000, timeout: 80000, enableHighAccuracy: true }); 
@@ -76,7 +83,7 @@
 	            'message: ' + error.message + '\n');
 	} 
 	
-</script>
+</script> 
 
 <title>Auto Sign</title>
 </head>
@@ -121,7 +128,7 @@
 					</div>
 				</div>
 				<!-- 				FIN -->
-
+ 
 			</div>
 
 		</div>

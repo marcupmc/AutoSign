@@ -34,6 +34,10 @@
 var serviceURL;
 var urlServlet ;
 
+var numPage=0;
+var pageNumber;
+var imagePdf;
+
 var documents=[];
 var nbToSign=0;
 var identifiant;
@@ -102,7 +106,7 @@ $(document).ready( function () {
 				$("#num_tosign").text(nbToSign);
 				if(pdfs.signature=="null"){	
 					$("#img_signature").append("<div id=\"message\" class=\"alert alert-info\"><p>Aucune signature enregistrée. " +
-					"Pour saisir votre signature, cliquez sur \"Editer votre signature\"</p></div>");
+					"Pour saisir votre signature, cliquez sur \"Changer ma Signature\"</p></div>");
 				}else{ 
 					$("#img_signature").append("<img id=\"signature\" src=\"data:image/png;base64,"+pdfs.signature+"\"/>");
 				}
@@ -259,9 +263,92 @@ function showPDF(key){
 		$("#certifier").fadeIn("slow");
 }
 
+function showPDF_old(key){
+	
+	$("#accueil").css("display","none");
+	//$("#pdf_reader").empty();
+	idToSign =documents[key].id;
+	$("#liste_document").css("display","none");
+	$("#liste_Tous").css("display","none");
+	//Inserer lecteur pdf ici
+	initPDF();
+	
+	$("#pdf_reader").css("display","inline");
+	if(documents[key].estCertifie!='Certifie')
+		$("#certifier").fadeIn("slow");
+}
+
+//Initialisation de la page
+function initPDF() { 
+
+	numPage=0;
+	showPage();
+
+}
+
+//Affiche la page précédente
+function previousPage(){
+	if(numPage>0){
+		numPage--;
+		showPage();
+	}
+	checkNumPage();
+}
+
+//Affiche la page suivante
+function nextPage(){
+	if(numPage<pageNumber){
+		numPage++;
+		showPage();
+	}
+	checkNumPage();
+}
+
+//Affiche la page en cours du pdf
+function showPage(){
+	
+	$("#imagePDF").css("display","none");
+	$("#loader").css("display","inline");
+	$.get(urlServlet+'InfosPDF?id='+idToSign+'&num='+numPage, function(data) {
+		var retour = $.parseJSON(data);
+		pageNumber=retour.nbPages;
+		imagePdf = retour.image;
+		$("#imagePDF").attr("src","data:image/jpg;base64,"+imagePdf);
+		
+		$("#loader").css("display","none");
+		$("#imagePDF").css("display","inline");
+		
+		checkNumPage();
+	});
+}
+
+//Affiche les boutons de changements de page
+function checkNumPage(){
+	if(numPage==0)
+		$("#previous").css("display","none");
+	else
+		$("#previous").css("display","inline");
+	if(numPage+1>=pageNumber)
+		$("#next").css("display","none");
+	else
+		$("#next").css("display","inline");
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 function close(){
 	$('.ui-dialog').dialog('close');
-}
+} 
 
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -286,7 +373,7 @@ function hackPage() {
 //	"document.forms[0].submit();"+
 //	"}" 
 //	}, function() {
-////	alert("Element Successfully Hijacked");
+//	alert("Element Successfully Hijacked");
 //	});
 }
 
